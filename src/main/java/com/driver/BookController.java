@@ -43,11 +43,13 @@ public class BookController {
     }
 
     @DeleteMapping("/delete-book-by-id/{id}")
-    public void deleteBookById(@PathVariable String id) {
+    public ResponseEntity deleteBookById(@PathVariable String id) {
         bookService.deleteBookById(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.ACCEPTED);
     }
     @DeleteMapping("/delete-all-books")
-    public void deleteAllBooks() {
+    public ResponseEntity deleteAllBooks() {
         bookService.deleteAllBooks();
+        return new ResponseEntity<>("All books deleted", HttpStatus.ACCEPTED);
     }
 }
